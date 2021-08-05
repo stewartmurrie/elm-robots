@@ -1,7 +1,10 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (..)
+import Element as El exposing (column, el, none, rgb255, row, text)
+import Element.Background as Bg
+import Element.Font as Font
+import Html exposing (Html)
 
 
 main : Program () Model Msg
@@ -47,5 +50,8 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ text "New Element" ]
+    El.layout [ Bg.color <| rgb255 34 34 56 ]
+        (column
+            [ Font.color <| rgb255 200 200 200 ]
+            [ el [] <| text "elm-robot 🤖" ]
+        )
