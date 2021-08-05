@@ -50,7 +50,7 @@ view model =
     El.layout [ Bg.color <| rgb255 34 34 56 ]
         (column
             [ Font.color <| rgb255 200 200 200 ]
-            [ el [] <| text "elm-robot"
+            [ el [] <| text "elm-robots"
             , viewRobot model.robot
             ]
         )
