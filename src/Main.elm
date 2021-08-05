@@ -7,14 +7,8 @@ import Element.Font as Font
 import Html exposing (Html)
 
 
-main : Program () Model Msg
-main =
-    Browser.element
-        { init = init
-        , view = view
-        , update = update
-        , subscriptions = subscriptions
-        }
+
+-- MODEL
 
 
 type alias Model =
@@ -23,14 +17,13 @@ type alias Model =
     }
 
 
-init : () -> ( Model, Cmd Msg )
-init _ =
-    ( Model 0 "modelInitialValue2", Cmd.none )
-
-
 type Msg
     = Msg1
     | Msg2
+
+
+
+-- UPDATE
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -43,9 +36,8 @@ update msg model =
             ( model, Cmd.none )
 
 
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
+
+-- VIEW
 
 
 view : Model -> Html Msg
@@ -55,3 +47,27 @@ view model =
             [ Font.color <| rgb255 200 200 200 ]
             [ el [] <| text "elm-robot 🤖" ]
         )
+
+
+
+-- MAIN
+
+
+main : Program () Model Msg
+main =
+    Browser.element
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
+
+
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( Model 0 "modelInitialValue2", Cmd.none )
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
