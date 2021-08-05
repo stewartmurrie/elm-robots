@@ -11,9 +11,14 @@ import Html exposing (Html)
 -- MODEL
 
 
+type alias Robot =
+    { x : Int
+    , y : Int
+    }
+
+
 type alias Model =
-    { property : Int
-    , property2 : String
+    { robot : Robot
     }
 
 
@@ -45,8 +50,15 @@ view model =
     El.layout [ Bg.color <| rgb255 34 34 56 ]
         (column
             [ Font.color <| rgb255 200 200 200 ]
-            [ el [] <| text "elm-robot 🤖" ]
+            [ el [] <| text "elm-robot"
+            , viewRobot model.robot
+            ]
         )
+
+
+viewRobot : Robot -> El.Element Msg
+viewRobot robot =
+    el [] <| text <| "🤖 @ (" ++ String.fromInt robot.x ++ ", " ++ String.fromInt robot.y ++ ")"
 
 
 
@@ -65,7 +77,7 @@ main =
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Model 0 "modelInitialValue2", Cmd.none )
+    ( Model { x = 0, y = 0 }, Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
